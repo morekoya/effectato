@@ -1,4 +1,9 @@
 class ArticlesController < ApplicationController
+
+  def index
+    @articles = Article.all
+  end
+  
   def new
     @article = Article.new
   end
@@ -29,6 +34,9 @@ class ArticlesController < ApplicationController
     else
       render edit
     end
+  end
+
+  def destroy
   end
 
   private
