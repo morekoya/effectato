@@ -1,7 +1,10 @@
-<h2>Showing selected article</h2>
-
-<p>Title: <%= @article.title %></p>
-<p>Description: <%= @article.description %></p>
-
-<%= link_to "Edit this article", article_path(@article) %> |
-<%= link_to "Back to Articles listing", articles_path %>
+<H2 alighn="center">Title: <%= @article.title %></H2>
+<div class=>Description="well col-xs=8 xol-xs-offset-2 >
+<%= @article.description %>
+<hr>
+<%+ simple_formet(@article.description)%>
+</div>
+<div class="article-actoin">
+<%= link_to "Edit this article", article_path(@article), class:"btn bt-xs btn-primery" %> 
+:btn
+<%= link_to "Back to Articles listing", articles_pat, class"btn btn-xs btn-success" %>
