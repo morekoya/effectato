@@ -1,10 +1,10 @@
-<H2 alighn="center">Title: <%= @article.title %></H2>
+<h2 alighn="center">Title: <%= @article.title %></h2>
 <div class=>Description="well col-xs=8 xol-xs-offset-2 >
-<%= @article.description %>
-<hr>
-<%+ simple_formet(@article.description)%>
+  <%= @article.description %>
+  <hr>
+  <%+ simple_format(@article.description)%>
 </div>
-<div class="article-actoin">
-<%= link_to "Edit this article", article_path(@article), class:"btn bt-xs btn-primery" %> 
-:btn
-<%= link_to "Back to Articles listing", articles_pat, class"btn btn-xs btn-success" %>
+<div class="article-action">
+  <%= link_to "Edit this article", article_path(@article), class:"btn bt-xs btn-primery" %> 
+  <%= link_to "Back to Articles listing", articles_path, class"btn btn-xs btn-success" %>
+</div>
