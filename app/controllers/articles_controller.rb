@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
       flash[:success] = "Article was succefully updated"
       redirect_to article_path(@article)
     else
-      render edit
+      render :edit
     end
   end
 
