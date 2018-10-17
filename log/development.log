@@ -5605,3 +5605,58 @@ Processing by CategoriesController#index as HTML
 Completed 200 OK in 83ms (Views: 73.6ms | ActiveRecord: 2.8ms)
 
 
+Started GET "/categories" for 127.0.0.1 at 2018-10-16 10:48:16 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "categories"[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  Rendered categories/index.html.erb within layouts/application (11.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_navigation.html.erb (45.9ms)
+  Rendered layouts/_messages.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (2.8ms)
+Completed 200 OK in 449ms (Views: 418.6ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2018-10-16 10:48:29 +0100
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles"[0m
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[36mArticleCategory Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "article_categories" WHERE "article_categories"."article_id" = ? LIMIT ?[0m  [["article_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mArticleCategory Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "article_categories" WHERE "article_categories"."article_id" = ? LIMIT ?[0m  [["article_id", 4], ["LIMIT", 1]]
+  [1m[36mArticleCategory Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "article_categories" WHERE "article_categories"."article_id" = ? LIMIT ?[0m  [["article_id", 5], ["LIMIT", 1]]
+  Rendered articles/_article.html.erb (56.0ms)
+  Rendered articles/index.html.erb within layouts/application (66.1ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_navigation.html.erb (3.3ms)
+  Rendered layouts/_messages.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 144ms (Views: 112.5ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-10-16 10:48:41 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered users/index.html.erb within layouts/application (27.9ms)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 4.7ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: articles.user_id: SELECT COUNT(*) FROM "articles" WHERE "articles"."user_id" = ?):
+    11:           </li>
+    12:           <li>
+    13:             <small>
+    14:               <%= pluralize(user.articles.count, "article") if user.articles %>
+    15:             </small>
+    16:           </li>
+    17:           <% if logged_in? and current_user.admin? %>
+  
+app/views/users/index.html.erb:14:in `block in _app_views_users_index_html_erb__3483888583706228815_70201877650560'
+app/views/users/index.html.erb:4:in `_app_views_users_index_html_erb__3483888583706228815_70201877650560'
